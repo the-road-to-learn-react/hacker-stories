@@ -52,16 +52,10 @@ const App = () => {
   React.useEffect(() => {
     setIsLoading(true);
 
-    getAsyncStories().then(result => {
-      setStories(result.data.stories);
-      setIsLoading(false);
-    });
-  }, []);
-
-  React.useEffect(() => {
     getAsyncStories()
       .then(result => {
         setStories(result.data.stories);
+        setIsLoading(false);
       })
       .catch(() => setIsError(true));
   }, []);
