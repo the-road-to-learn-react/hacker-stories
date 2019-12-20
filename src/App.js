@@ -115,6 +115,12 @@ const SearchForm = ({
 );
 
 class InputWithLabel extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.inputRef = React.createRef();
+  }
+
   componentDidMount() {
     if (this.props.isFocused) {
       this.inputRef.focus();
@@ -135,9 +141,7 @@ class InputWithLabel extends React.Component {
         <label htmlFor={id}>{children}</label>
         &nbsp;
         <input
-          ref={element => {
-            this.inputRef = element;
-          }}
+          ref={this.inputRef}
           id={id}
           type={type}
           value={value}
