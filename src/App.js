@@ -123,7 +123,7 @@ class InputWithLabel extends React.Component {
 
   componentDidMount() {
     if (this.props.isFocused) {
-      this.inputRef.focus();
+      this.inputRef.current.focus();
     }
   }
 
