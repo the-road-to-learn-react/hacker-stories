@@ -69,21 +69,19 @@ const StyledItem = styled.div`
   display: flex;
   align-items: center;
   padding-bottom: 5px;
-
-  & > span {
-    padding: 0 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
-  & > span > a {
-    color: inherit;
-  }
 `;
 
 const StyledColumn = styled.span`
+  padding: 0 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  a {
+    color: inherit;
+  }
+
   width: ${props => props.width};
 `;
 
