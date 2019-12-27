@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputWithLabel renders snapshot 1`] = `
+Array [
+  <label
+    htmlFor="1"
+  >
+    Input with Label
+  </label>,
+  " ",
+  <input
+    id="1"
+    type="text"
+    value="a"
+  />,
+]
+`;
+
+exports[`Item renders snapshot 1`] = `
+<div>
+  <span>
+    <a
+      href="https://reactjs.org/"
+    >
+      React
+    </a>
+  </span>
+  <span>
+    Jordan Walke
+  </span>
+  <span>
+    3
+  </span>
+  <span>
+    4
+  </span>
+  <span>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Dismiss
+    </button>
+  </span>
+</div>
+`;
