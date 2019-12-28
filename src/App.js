@@ -81,9 +81,7 @@ const App = () => {
     'React'
   );
 
-  const [urls, setUrls] = React.useState([
-    `${API_ENDPOINT}${searchTerm}`,
-  ]);
+  const [urls, setUrls] = React.useState([getUrl(searchTerm)]);
 
   const [stories, dispatchStories] = React.useReducer(
     storiesReducer,
