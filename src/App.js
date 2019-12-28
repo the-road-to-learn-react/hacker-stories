@@ -17,9 +17,7 @@ const getLastSearches = urls =>
         return result.concat(searchTerm);
       }
 
-      const previousSearchTerm = extractSearchTerm(
-        result[result.length - 1]
-      );
+      const previousSearchTerm = result[result.length - 1];
 
       if (searchTerm === previousSearchTerm) {
         return result;
