@@ -195,7 +195,7 @@ const List = ({ list, onRemoveItem }) => {
 
   return (
     <div>
-      <div style={{ display: 'flex' }}>
+      <div>
         <span>
           <button type="button" onClick={() => handleSort('TITLE')}>
             Title
