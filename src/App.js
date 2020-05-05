@@ -59,7 +59,7 @@ const App = () => {
   );
 
   React.useEffect(() => {
-    if (searchTerm === '') return;
+    if (!searchTerm) return;
 
     dispatchStories({ type: 'STORIES_FETCH_INIT' });
 
