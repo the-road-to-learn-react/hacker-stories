@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import cs from 'classnames';
 
 import styles from './App.module.css';
 
@@ -140,7 +141,7 @@ const SearchForm = ({
     <button
       type="submit"
       disabled={!searchTerm}
-      className={`${styles.button} ${styles.buttonLarge}`}
+      className={cs(styles.button, styles.buttonLarge)}
     >
       Submit
     </button>
