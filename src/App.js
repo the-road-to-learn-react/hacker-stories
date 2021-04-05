@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import axios from 'axios';
 import { sortBy } from 'lodash';
 
@@ -10,12 +10,12 @@ const PARAM_PAGE = 'page=';
 const getUrl = (searchTerm, page) =>
   `${API_BASE}${API_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`;
 
-const extractSearchTerm = url =>
+const extractSearchTerm = (url) =>
   url
     .substring(url.lastIndexOf('?') + 1, url.lastIndexOf('&'))
     .replace(PARAM_SEARCH, '');
 
-const getLastSearches = urls =>
+const getLastSearches = (urls) =>
   urls
     .reduce((result, url, index) => {
       const searchTerm = extractSearchTerm(url);
@@ -76,7 +76,7 @@ const storiesReducer = (state, action) => {
       return {
         ...state,
         data: state.data.filter(
-          story => action.payload.objectID !== story.objectID
+          (story) => action.payload.objectID !== story.objectID
         ),
       };
     default:
@@ -120,24 +120,24 @@ const App = () => {
     handleFetchStories();
   }, [handleFetchStories]);
 
-  const handleRemoveStory = item => {
+  const handleRemoveStory = (item) => {
     dispatchStories({
       type: 'REMOVE_STORY',
       payload: item,
     });
   };
 
-  const handleSearchInput = event => {
+  const handleSearchInput = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearchSubmit = event => {
+  const handleSearchSubmit = (event) => {
     handleSearch(searchTerm, 0);
 
     event.preventDefault();
   };
 
-  const handleLastSearch = searchTerm => {
+  const handleLastSearch = (searchTerm) => {
     setSearchTerm(searchTerm);
 
     handleSearch(searchTerm, 0);
@@ -255,11 +255,11 @@ const InputWithLabel = ({
 };
 
 const SORTS = {
-  NONE: list => list,
-  TITLE: list => sortBy(list, 'title'),
-  AUTHOR: list => sortBy(list, 'author'),
-  COMMENT: list => sortBy(list, 'num_comments').reverse(),
-  POINT: list => sortBy(list, 'points').reverse(),
+  NONE: (list) => list,
+  TITLE: (list) => sortBy(list, 'title'),
+  AUTHOR: (list) => sortBy(list, 'author'),
+  COMMENT: (list) => sortBy(list, 'num_comments').reverse(),
+  POINT: (list) => sortBy(list, 'points').reverse(),
 };
 
 const List = ({ list, onRemoveItem }) => {
@@ -268,7 +268,7 @@ const List = ({ list, onRemoveItem }) => {
     isReverse: false,
   });
 
-  const handleSort = sortKey => {
+  const handleSort = (sortKey) => {
     const isReverse = sort.sortKey === sortKey && !sort.isReverse;
 
     setSort({ sortKey, isReverse });
@@ -306,7 +306,7 @@ const List = ({ list, onRemoveItem }) => {
         <span>Actions</span>
       </div>
 
-      {sortedList.map(item => (
+      {sortedList.map((item) => (
         <Item
           key={item.objectID}
           item={item}
