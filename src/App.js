@@ -203,3 +203,5 @@ const Item = ({ item, onRemoveItem }) => (
 );
 
 export default App;
+
+export { storiesReducer, SearchForm, InputWithLabel, List, Item };
