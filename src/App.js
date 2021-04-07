@@ -2,6 +2,7 @@ import * as React from 'react';
 import axios from 'axios';
 
 import './App.css';
+import { ReactComponent as Check } from './check.svg';
 
 const API_ENDPOINT = 'https://hn.algolia.com/api/v1/search?query=';
 
@@ -207,7 +208,7 @@ const Item = ({ item, onRemoveItem }) => (
         onClick={() => onRemoveItem(item)}
         className="button button_small"
       >
-        Dismiss
+        <Check height="18px" width="18px" />
       </button>
     </span>
   </li>
