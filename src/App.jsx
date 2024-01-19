@@ -1,5 +1,6 @@
 import * as React from 'react';
 import axios from 'axios';
+import { sortBy } from 'lodash';
 
 const storiesReducer = (state, action) => {
   switch (action.type) {
@@ -174,27 +175,70 @@ const InputWithLabel = ({
   );
 };
 
-const List = ({ list, onRemoveItem }) => (
-  <ul>
-    {list.map((item) => (
-      <Item
-        key={item.objectID}
-        item={item}
-        onRemoveItem={onRemoveItem}
-      />
-    ))}
-  </ul>
-);
+const SORTS = {
+  NONE: (list) => list,
+  TITLE: (list) => sortBy(list, 'title'),
+  AUTHOR: (list) => sortBy(list, 'author'),
+  COMMENT: (list) => sortBy(list, 'num_comments').reverse(),
+  POINT: (list) => sortBy(list, 'points').reverse(),
+};
+
+const List = ({ list, onRemoveItem }) => {
+  const [sort, setSort] = React.useState('NONE');
+
+  const handleSort = (sortKey) => {
+    setSort(sortKey);
+  };
+
+  const sortFunction = SORTS[sort];
+  const sortedList = sortFunction(list);
+
+  return (
+    <ul>
+      <li style={{ display: 'flex' }}>
+        <span style={{ width: '40%' }}>
+          <button type="button" onClick={() => handleSort('TITLE')}>
+            Title
+          </button>
+        </span>
+        <span style={{ width: '30%' }}>
+          <button type="button" onClick={() => handleSort('AUTHOR')}>
+            Author
+          </button>
+        </span>
+        <span style={{ width: '10%' }}>
+          <button type="button" onClick={() => handleSort('COMMENT')}>
+            Comments
+          </button>
+        </span>
+        <span style={{ width: '10%' }}>
+          <button type="button" onClick={() => handleSort('POINT')}>
+            Points
+          </button>
+        </span>
+        <span style={{ width: '10%' }}>Actions</span>
+      </li>
+
+      {sortedList.map((item) => (
+        <Item
+          key={item.objectID}
+          item={item}
+          onRemoveItem={onRemoveItem}
+        />
+      ))}
+    </ul>
+  );
+};
 
 const Item = ({ item, onRemoveItem }) => (
-  <li>
-    <span>
+  <li style={{ display: 'flex' }}>
+    <span style={{ width: '40%' }}>
       <a href={item.url}>{item.title}</a>
     </span>
-    <span>{item.author}</span>
-    <span>{item.num_comments}</span>
-    <span>{item.points}</span>
-    <span>
+    <span style={{ width: '30%' }}>{item.author}</span>
+    <span style={{ width: '10%' }}>{item.num_comments}</span>
+    <span style={{ width: '10%' }}>{item.points}</span>
+    <span style={{ width: '10%' }}>
       <button type="button" onClick={() => onRemoveItem(item)}>
         Dismiss
       </button>
