@@ -64,7 +64,7 @@ type ListProps = {
   list: Story[];
 };
 
-const List: React.FC<ListProps> = (props) => (
+const List = (props: ListProps) => (
   <ul>
     {props.list.map((item) => (
       <Item key={item.objectID} item={item} />
@@ -76,7 +76,7 @@ type ItemProps = {
   item: Story;
 };
 
-const Item: React.FC<ItemProps> = (props) => (
+const Item = (props: ItemProps) => (
   <li>
     <span>
       <a href={props.item.url}>{props.item.title}</a>
