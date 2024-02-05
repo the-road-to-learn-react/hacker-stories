@@ -76,10 +76,7 @@ const storiesReducer = (
   }
 };
 
-const useStorageState = (
-  key: string,
-  initialState: string
-): [string, (newValue: string) => void] => {
+const useStorageState = (key: string, initialState: string) => {
   const [value, setValue] = React.useState(
     localStorage.getItem(key) || initialState
   );
@@ -88,7 +85,7 @@ const useStorageState = (
     localStorage.setItem(key, value);
   }, [value, key]);
 
-  return [value, setValue];
+  return [value, setValue] as const;
 };
 
 const API_ENDPOINT = 'https://hn.algolia.com/api/v1/search?query=';
