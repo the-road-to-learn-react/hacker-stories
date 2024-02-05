@@ -9,8 +9,6 @@ type Story = {
   points: number;
 };
 
-type Stories = Story[];
-
 const App = () => {
   const stories = [
     {
@@ -63,7 +61,7 @@ const Search = () => {
 };
 
 type ListProps = {
-  list: Stories;
+  list: Story[];
 };
 
 const List: React.FC<ListProps> = (props) => (
