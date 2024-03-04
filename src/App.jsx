@@ -56,7 +56,7 @@ const List = (props) => (
 );
 
 const Item = (props) => (
-  <li>
+  <li key={props.key}>
     <span>
       <a href={props.item.url}>{props.item.title}</a>
     </span>
