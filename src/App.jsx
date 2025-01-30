@@ -93,10 +93,8 @@ const App = () => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearchSubmit = (event) => {
+  const searchAction = () => {
     setUrl(`${API_ENDPOINT}${searchTerm}`);
-
-    event.preventDefault();
   };
 
   return (
@@ -106,7 +104,7 @@ const App = () => {
       <SearchForm
         searchTerm={searchTerm}
         onSearchInput={handleSearchInput}
-        onSearchSubmit={handleSearchSubmit}
+        searchAction={searchAction}
       />
 
       <hr />
@@ -122,12 +120,8 @@ const App = () => {
   );
 };
 
-const SearchForm = ({
-  searchTerm,
-  onSearchInput,
-  onSearchSubmit,
-}) => (
-  <form onSubmit={onSearchSubmit}>
+const SearchForm = ({ searchTerm, onSearchInput, searchAction }) => (
+  <form action={searchAction}>
     <InputWithLabel
       id="search"
       value={searchTerm}
