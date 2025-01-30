@@ -1,11 +1,47 @@
 import { describe, it, expect } from 'vitest';
 
-describe('something truthy and falsy', () => {
-  it('true to be true', () => {
-    expect(true).toBeTruthy();
-  });
+import App, {
+  storiesReducer,
+  Item,
+  List,
+  SearchForm,
+  InputWithLabel,
+} from './App';
 
-  it('false to be false', () => {
-    expect(false).toBeFalsy();
+const storyOne = {
+  title: 'React',
+  url: 'https://react.dev/',
+  author: 'Jordan Walke',
+  num_comments: 3,
+  points: 4,
+  objectID: 0,
+};
+
+const storyTwo = {
+  title: 'Redux',
+  url: 'https://redux.js.org/',
+  author: 'Dan Abramov, Andrew Clark',
+  num_comments: 2,
+  points: 5,
+  objectID: 1,
+};
+
+const stories = [storyOne, storyTwo];
+
+describe('storiesReducer', () => {
+  it('removes a story from all stories', () => {
+    const action = { type: 'REMOVE_STORY', payload: storyOne };
+    const state = { data: stories, isLoading: false, isError: false };
+
+    const newState = storiesReducer(state, action);
+
+    const expectedState = {
+      data: [storyTwo],
+      isLoading: false,
+      isError: false,
+    };
+
+    expect(newState).toStrictEqual(expectedState);
+    // expect(newState).toBe(expectedState);
   });
 });
