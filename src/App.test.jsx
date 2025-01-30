@@ -42,6 +42,5 @@ describe('storiesReducer', () => {
     };
 
     expect(newState).toStrictEqual(expectedState);
-    // expect(newState).toBe(expectedState);
   });
 });
