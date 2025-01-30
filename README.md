@@ -1,5 +1,8 @@
-# The Road to React - Hacker Stories
+# React + Vite
 
-[![Build Status](https://travis-ci.org/the-road-to-learn-react/hacker-stories.svg?branch=master)](https://travis-ci.org/the-road-to-learn-react/hacker-stories) [![Slack](https://slack-the-road-to-learn-react.wieruch.com/badge.svg)](https://slack-the-road-to-learn-react.wieruch.com/) [![Greenkeeper badge](https://badges.greenkeeper.io/the-road-to-learn-react/hacker-stories.svg)](https://greenkeeper.io/)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Source Code for [The Road to React](https://roadtoreact.com).
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
